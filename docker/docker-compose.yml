@@ -1,0 +1,59 @@
+version: '3'
+services:
+  ukc-ep:
+    image: "unboundcasp/ukc:${CASP_VERSION:-latest}"
+    restart: always
+    ports:
+     - "8443:8443"
+    command: ["ep", "ukc-partner", "ukc-aux"] 
+    hostname: ukc-ep
+  ukc-partner:
+    image: "unboundcasp/ukc:${CASP_VERSION:-latest}"
+    restart: always
+    command: ["partner", "ukc-ep", "ukc-aux"]
+    hostname: ukc-partner
+  ukc-aux:
+    image: "unboundcasp/ukc:${CASP_VERSION:-latest}"
+    restart: always
+    command: ["aux", "ukc-ep", "ukc-partner"]
+    hostname: ukc-aux
+    depends_on:
+      - "ukc-ep"
+      - "ukc-partner"
+  db:
+    image: postgres:11
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 'DBPassword'
+  casp:
+    image: "unboundcasp/casp:${CASP_VERSION:-latest}"
+    restart: always
+    ports:
+      - "443:443"
+    environment:
+      PGHOST: 'db'
+      PGDATABASE: 'postgres'
+      PGUSER: 'postgres'
+      PGPASSWORD: 'DBPassword'
+      UKC_EP: 'ukc-ep'
+      CASP_FIREBASE_TOKEN: ${FIREBASE_TOKEN}
+      INFURA_TOKEN: ${INFURA_TOKEN}
+      BLOCKCYPHER_TOKEN: ${BLOCKCYPHER_TOKEN}
+      CASP_PASSWORD: 'Unbound1!'
+      CASP_ACCOUNT: 'CASP'
+    depends_on:
+      - "ukc-ep"
+      - "ukc-partner"
+      - "db"
+  casp-bot:
+    image: "unboundcasp/casp-bot:${CASP_VERSION:-latest}"
+    restart: always
+    environment:
+      BOT_NAME: "casp-bot"
+      CASP: "casp"
+      CASP_PASSWORD: 'Unbound1!'
+      CASP_ACCOUNT: 'CASP'
+    depends_on:
+      - "casp"
