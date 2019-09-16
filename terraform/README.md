@@ -1,7 +1,7 @@
 # Deploy CASP Using Terraform
 
 [Terraform](https://www.terraform.io/) is a tool for infrastructure deployment over AWS. It is used here to deploy a preconfigured [CASP](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_Offering_Description/Solution.htm) system.
-    ![Alt text](CASP_VPC.png?raw=true "CASP deployment overview")
+    ![Alt text](./docs/terraform_casp.png "CASP Terraform Architecture")
 
 ## Prerequisites
 
