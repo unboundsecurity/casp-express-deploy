@@ -11,8 +11,13 @@ The rapid installation process is described below. For the full installation pro
 <a name="General-Prerequsites"></a>
 # General Prerequsites
 The following are required before installing CASP. 
-1. An Infura access token (for Ethereum ledger access). See [Infura](https://infura.io/).
-1. BlockCypher access token (for Bitcoin ledger access). See [BlockCypher](https://www.blockcypher.com).
+1. An Infura access token (for Ethereum ledger access). See [Infura](https://infura.io/register).
+   a. Register for the Infura site.
+   a. Create a new project.
+   a. Copy the access token from the project page.
+1. BlockCypher access token (for Bitcoin ledger access). See [BlockCypher](https://accounts.blockcypher.com/signup).
+   a. Register for the Blockcypher site.
+   a. After verifying your email, it opens a page that displays the token.
 1. Firebase messaging token (to enable push notifications). Contact Unbound for it.
 
 # Installation
