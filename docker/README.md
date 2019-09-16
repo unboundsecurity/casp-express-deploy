@@ -10,10 +10,9 @@ This implementation is only for demo proposes. For production, you must install 
 
 ## Prerequisites
 
+1. Complete the [General Prerequisites](../README.md#General-Prerequsites)
 1. Docker 18 or newer. See [Docker](https://www.docker.com).
-2. An Infura access token (for Ethereum ledger access). See [Infura](https://infura.io/).
-3. BlockCypher access token (for Bitcoin ledger access). See [BlockCypher](https://www.blockcypher.com).
-4. Firebase messaging token (to enable push notifications). Contact Unbound for it.
+
 
 ## Overview
 
