@@ -8,8 +8,20 @@ CASP can be rapidly deployed using one of these methods:
 
 The rapid installation process is described below. For the full installation process, refer to the [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
 
+## Overview
+
+The CASP implementation is comprised of the following components:
+
+1. **UKC** - Unbound Key Managment servers, including an Entry Point, Partner and Auxiliary server.
+2. **PostgreSQL Database** - used by CASP Service.
+3. **CASP Services** - including the CASP core service and CASP wallet service.
+4. **CASP Bot** - a CASP participant that automatically approves operations.
+5. **CASP Web UI** - a web interface used to manage CASP.
+
+Both deployment options install all of the above components. After installation, you can log into the CASP web interface and start using CASP!
+
 <a name="General-Prerequsites"></a>
-# General Prerequsites
+## General Prerequsites
 The following are required before installing CASP. 
 1. An Infura access token (for Ethereum ledger access). See [Infura](https://infura.io/register).
    - Register for the Infura site.
@@ -20,7 +32,7 @@ The following are required before installing CASP.
    - After verifying your email, it opens a page that displays the token.
 1. Firebase messaging token (to enable push notifications). Contact Unbound for it.
 
-# Installation
+## Installation
 After completing the prerequisites, follow the instructions based on the installation type:
 - [Docker](./docker)
 - [Terraform](./terraform)
