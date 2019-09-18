@@ -6,16 +6,7 @@ This project provides a quick and easy way to evaluate the Unbound [CASP](https:
 
 This implementation is only for demo proposes. For production, you must install and setup CASP as described in the [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
 
-## 1.1. Overview
-
-This CASP implementation provides the following components:
-
-1. **UKC** - Unbound Key Managment servers, including an Entry Point, Partner and Auxiliary server.
-2. **PostgreSQL Database** - used by CASP Service.
-3. **CASP Services** - including the CASP core service and CASP wallet service.
-4. **CASP Bot** - a CASP participant that automatically approves operations.
-
-## 1.2. Getting Started
+## 1.1. Getting Started
 
 1. Complete the [General Prerequisites](../README.md#General-Prerequsites).
 1. Install Docker Desktop CE (community edition). It must include Docker Engine version 18 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
@@ -57,7 +48,7 @@ This CASP implementation provides the following components:
 
 **Congratulations! CASP is now running.**
 
-## 1.3. Explore the Web Interface
+## 1.2. Explore the Web Interface
 The Web UI provides the following screens:
 
 - Accounts - provides information about your accounts, including the pending and total number of participants, vaults and operations.
@@ -66,7 +57,7 @@ The Web UI provides the following screens:
 - Operations - lists all quorum operations for the account.
 - System - provides status information about various components in the system.
 
-## 1.4. More Information
+## 1.3. More Information
 This release has these associated documents:
 
 - [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/Unbound_Cover_Page.htm)
@@ -76,7 +67,7 @@ This release has these associated documents:
 - [CASP Developers Guide with API Reference](https://www.unboundtech.com/docs/CASP/CASP_Developers_Guide-HTML/Content/Products/Unbound_Cover_Page.htm)
 - [CASP Participant SDK](https://www.unboundtech.com/docs/CASP/CASP_Participant_SDK-HTML/Content/Products/Unbound_Cover_Page.htm)
 
-## 1.5. Troubleshooting
+## 1.4. Troubleshooting
 
 If you cannot open the CASP web console in your browser, you might have port 443 in use by another service.
 
@@ -92,9 +83,9 @@ For example, to change the port from 443 to 9443:
     ```
 3. Use `https://localhost:9443/caspui` to open CASP web console.
 
-## 1.6. Tips
+## 1.5. Tips
 
-### 1.6.1. Installing Docker on CentOS 7
+### 1.5.1. Installing Docker on CentOS 7
 
 The default Docker installed by `yum` is an older version of Docker. You can use the technique below to update to a newer Docker version.
 
