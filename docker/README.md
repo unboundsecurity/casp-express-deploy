@@ -1,18 +1,12 @@
 # Deploy CASP Using Docker
 
-This is a quick start for [CASP](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_Offering_Description/Solution.htm) that can be used for POCs and evaulations. It is based on Docker Compose.
+This is a quick start for [CASP](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_Offering_Description/Solution.htm) that can be used for POCs and evaluations. It is based on Docker Compose.
 
-**Note: This project should not be use for production.**
+**Note: This project is intended to be used for POCs.**
 
 This project provides a quick and easy way to evaluate the Unbound CASP solution. Unbound CASP is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch CASP without any configuration.
 
 This implementation is only for demo proposes. For production, you must install and setup CASP as described in the [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
-
-## Prerequisites
-
-1. Complete the [General Prerequisites](../README.md#General-Prerequsites)
-1. Docker 18 or newer. See [Docker](https://www.docker.com).
-
 
 ## Overview
 
@@ -25,8 +19,15 @@ This CASP implementation provides the following components:
 
 ## Getting Started
 
+1. Complete the [General Prerequisites](../README.md#General-Prerequsites).
+1. Install Docker Desktop CE (community edition) 18 or newer. See [Docker](https://hub.docker.com/?overlay=onboarding).
+   - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
+   - Download the Docker Desktop installer and install it.
+   - If you are running on Windows, enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+   - You may need to [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
+1. [Request](mailto:support@unboundtech.com) to be added to Unbound's Docker organization.
 1. Download or clone this repository.
-2. Create an *.env* file in the same folder as the repository. The *.env* file holds your access token (see [Prerequisites](#Prerequisites)).
+1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access token (see [Prerequisites](#Prerequisites)).
 
    For example:
 
@@ -35,18 +36,42 @@ This CASP implementation provides the following components:
     BLOCKCYPHER_TOKEN=<Replace with BlockCypher access token>
     FIREBASE_TOKEN=<Replace with Firebase token provided by Unbound>
    ```
-3. Open a terminal, navigate to the folder, and execute the following command:
-
+1. Start Docker.
+1. Open a terminal, navigate to the folder, and then log into Docker:
+    ```bash
+	docker login
+	```
+	Enter your credentials.
+1. Run the Docker script to create the CASP container:
     ```bash
     docker-compose up
     ```
+    The setup takes several minutes to complete.
+	
+	Everything is ready when you see this message:
+    ```
+    basp-bot_1 |  Starting to approve operations
+	```
+1. Open your browser and navigate to `https://localhost/caspui`. Use these credentials to log in:
+    - Username: so
+	- Password: Unbound1!
 
-    The setup takes several minutes. Everything is ready when you see a message that the CASP bot is **starting to approve operations**.
-4. Open your browser and navigate to `https://localhost/caspui`.
+**Congratulations! CASP is now running.**
+
+## Explore the Web Interface
+The Web UI provides the following screens:
+
+- Accounts - provides information about your accounts, including the pending and total number of participants, vaults and operations.
+- Users - lists all users for the account.
+- Vaults - lists all vaults associated with the account.
+- Operations - lists all quorum operations for the account.
+- System - provides status information about various components in the system.
+
 
 ## Troubleshooting
 
 If you cannot open the CASP web console in your browser, you might have port 443 in use by another service.
+
 You can change CASP web console port by editing `docker-compose.yml`, and replacing the CASP export port with a different port.
 
 For example, to change the port from 443 to 9443: 
