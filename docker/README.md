@@ -4,7 +4,7 @@ This project provides a quick and easy way to evaluate the Unbound [CASP](https:
 
 **Note: This project is intended to be used for POCs.**
 
-This implementation is only for demo proposes. For production, you must install and setup CASP as described in the [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
+This implementation is only for demo proposes. For production, you can [Deploy CASP Using Terraform](../terraform/README.md).
 
 ## 1.1. Getting Started
 
