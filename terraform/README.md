@@ -30,7 +30,7 @@ All of these steps should be executed on your AWS server.
     - unbound.tf - Terraform configuration file.
     - CASP_installer.sh - installer script.
 	
-What's with these?	
+1. Request the CASP and UKC packages from Unbound. For example, on CentOS, you receive links to download these files:	
     - casp-1.0.XXX.YYYYY-RHES.x86_64.rpm
     - ekm-2.0.XXX.YYYYY-RHES.x86_64.rpm
 
