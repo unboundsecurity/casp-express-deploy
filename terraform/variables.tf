@@ -1,30 +1,37 @@
-#===================================
-# Start of user configration section
-#===================================
-
 variable "public_key_path" { default = "/home/autobuild/.ssh/id_rsa.pub" }
 variable "private_key_path" { default = "/home/autobuild/.ssh/id_rsa" }
-variable "key_name" { default = "name for the project" }
-variable "local_path" { default = "path to the place where rpm files are located" }
-variable "casp_rpm_version_name" { default = "casp rpm file name" }
-variable "ukc_rpm_version_name" { default = "ekm rpm file name" }
+variable "local_path" { default = "replace it with /home/autobuild/CASP_terraform/test190819/" }
+variable "casp_rpm" { default = "replace it with casp rpm version: casp-1.0.2001.38807-RHES.x86_64.rpm" }
+variable "ukc_rpm" { default = "replace it with ekm rpm version: ekm-2.0.1907.38507-RHES.x86_64.rpm" }
+variable "access_key" { default = "replace it with AWS access_key" }
+variable "secret_key" { default = "replace it with AWS secret_key" }
+variable "path_backup_keys" { default = "/home/centos/" }
 
-variable "access_key" { default = "AWS access key" }
-variable "secret_key" { default = "AWS secret key" }
-variable "path_backup_keys" { default = "path to backup keys" }
 
-variable "aws_region" { default = "location of amazon cloud. example: sa-east-1" }
-variable "ukc_amis" {
-  type = "map"
-  default = {
-# CentOS 7.6
-# User: centos
-    "us-west-1" = "ami-xxxxxxxxxxxxxxxx"
-# RH 7.2
-# User: ec2-user
-    "sa-east-1" = "ami-xxxxxxxxxxxxxxxx"
-  }
+variable "resource-group-name" { default = "Terraform-CASP-demo"}
+variable "ep_public_key_path" { default = "/home/autobuild/.ssh/id_rsa.pub" }
+variable "ep_private_key_path" { default = "/home/autobuild/.ssh/id_rsa" }
+variable "partner_public_key_path" { default = "/home/autobuild/.ssh/id_rsa.pub" }
+variable "partner_private_key_path" { default = "/home/autobuild/.ssh/id_rsa" }
+#
+# variable "key_name": default may not contain interpolations
+#
+variable "key_name_0" { default = "terraform_ukc_ep_key" }
+variable "key_name_1" { default = "terraform_ukc_partner_aux_key" }
+variable "key_name_2" { default = "terraform_casp_key" }
+
+
+variable "password1" { default = "Password1!" }
+variable "os_user_0" {default = "centos" }
+
+
+variable "provide_ssh" {
+  description = "If true, id_rsa key will be copied to bastion and hosts in the private subnet will be accessible by 2 hops"
 }
+
+
+variable "aws_region" { default = "sa-east-1" }
+
 
 variable "casp_amis" {
   type = "map"
@@ -34,77 +41,17 @@ variable "casp_amis" {
     "us-west-1" = "ami-xxxxxxxxxxxxxxxx"
 # RH 7.2
 # User: ec2-user
+    "us-west-1" = "ami-xxxxxxxxxxxxxxxx"
     "sa-east-1" = "ami-xxxxxxxxxxxxxxxx"
   }
 }
 
-variable "resource-group-name" { default = "name for the project"}
+variable "token-blockcypher-btc" { default = "replace it with blockcypher-btc token" }
+variable "token-blockcypher-btctest" { default = "replace it by blockcypher-btctest token" }
 
-variable "token-blockcypher-btc" { default = "!!!!!! replace it with blockcypher-btc token !!!!!!" }
-variable "token-blockcypher-btctest" { default = "!!!!!! replace it by blockcypher-btctest token !!!!!!" }
-
-variable "token-infura-eth" { default = "!!!!!! replace it with infura_eth token !!!!!!" }
-variable "token-infura-ethtest" { default = "!!!!!! replace it with infura_ethtest token !!!!!!" }
+variable "token-infura-eth" { default = "replace it with infura_eth token" }
+variable "token-infura-ethtest" { default = "replace it with infura_ethtest token" }
 
 #Firebase push notifaction push token
 variable "firebase_apikey" {default = "Place your firebase mobile  push token here" }
 
-#=================================
-# End of user configration section
-#=================================
-
-#===============
-# Provisioners
-#===============
-
-resource "random_string" "dbpasswd" {
-  length = 32
-  min_upper = 2
-  min_lower = 2
-  min_numeric = 2
-  min_special = 2
-  override_special = "!_+=:%"
-
-  provisioner "local-exec" {
-    command = "echo ${random_string.dbpasswd.result} > dbpasswd.txt"
-  }
-}
-
-resource "random_string" "ukc-root-passwd" {
-  length = 32
-  min_upper = 2
-  min_lower = 2
-  min_numeric = 2
-  min_special = 2
-  override_special = "!_+=:%"
-
-  provisioner "local-exec" {
-    command = "echo ${random_string.ukc-root-passwd.result} > ukc-root-passwd.txt"
-  }
-}
-
-resource "random_string" "ukc-casp-so-passwd" {
-  length = 32
-  min_upper = 2
-  min_lower = 2
-  min_numeric = 2
-  min_special = 2
-  override_special = "!_+=:%"
-
-  provisioner "local-exec" {
-    command = "echo ${random_string.ukc-casp-so-passwd.result} > ukc-casp-so-passwd.txt"
-  }
-}
-
-resource "random_string" "ukc-casp-user-passwd" {
-  length = 32
-  min_upper = 2
-  min_lower = 2
-  min_numeric = 2
-  min_special = 2
-  override_special = "!_+=:%"
-
-  provisioner "local-exec" {
-    command = "echo ${random_string.ukc-casp-user-passwd.result} > ukc-casp-user-passwd.txt"
-  }
-}
