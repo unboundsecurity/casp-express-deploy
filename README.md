@@ -35,4 +35,4 @@ The following are required before installing CASP.
 ## Installation
 After completing the prerequisites, follow the instructions based on the installation type:
 - [Docker](./docker)
-- [Terraform](./terraform)
+- [Terraform](./terraform) (under construction)
