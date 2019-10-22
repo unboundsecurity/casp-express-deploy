@@ -3,8 +3,8 @@
 Unbound’s Crypto Asset Security Platform (“**CASP**”) provides the advanced technology and the architecture to secure crypto asset transactions. An overview of the CASP solution is found [here](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_Offering_Description/Solution.htm).
 
 CASP can be rapidly deployed using one of these methods:
-- [Docker](https://www.docker.com/products/docker-desktop) - Install CASP in a container. This method is intended for POCs.
-- [Terraform](https://www.terraform.io/) - Use code to build the CASP infrastructure. This method is intended for production systems.
+- [Docker](https://hub.docker.com/?overlay=onboarding) - Install CASP in a container. This method is intended for POCs.
+- [Terraform](https://www.terraform.io/downloads.html) - Use code to build the CASP infrastructure. This method is intended for production systems.
 
 The rapid installation process is described below. For the full installation process, refer to the [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
 
