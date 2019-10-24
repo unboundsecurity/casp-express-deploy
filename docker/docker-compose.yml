@@ -54,6 +54,7 @@ services:
     depends_on:
       - "ukc-ep"
       - "ukc-partner"
+      - "ukc-aux"
       - "db"
   casp-bot:
     image: "unboundcasp/casp-bot:${CASP_VERSION:-latest}"
@@ -65,3 +66,4 @@ services:
       CASP_ACCOUNT: 'CASP'
     depends_on:
       - "casp"
+      
