@@ -31,6 +31,7 @@ variable "provide_ssh" {
 
 
 variable "aws_region" { default = "sa-east-1" }
+variable "instance_type" { default = "t2"}
 
 
 variable "casp_amis" {
@@ -54,4 +55,5 @@ variable "token-infura-ethtest" { default = "replace it with infura_ethtest toke
 
 #Firebase push notifaction push token
 variable "firebase_apikey" {default = "Place your firebase mobile  push token here" }
+
 
