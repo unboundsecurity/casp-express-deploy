@@ -69,6 +69,8 @@ This release has these associated documents:
 
 ## 1.4. Troubleshooting
 
+### 1.4.1. Cannot open the web console
+
 If you cannot open the CASP web console in your browser, you might have port 443 in use by another service.
 
 You can change CASP web console port by editing `docker-compose.yml`, and replacing the CASP export port with a different port.
@@ -83,6 +85,23 @@ For example, to change the port from 443 to 9443:
     ```
 3. Use `https://localhost:9443/caspui` to open CASP web console.
 
+### 1.4.2. Restarting Docker
+
+To restart Docker:
+
+1. Ensure that the previous session is finished:
+    ```bash
+    docker-compose down
+    ```
+2. Get the latest files:
+    ```bash
+    docker-compose pull
+    ```
+3. Start Docker:
+    ```bash
+    docker-compose up
+    ```
+    
 ## 1.5. Tips
 
 ### 1.5.1. Installing Docker on CentOS 7
