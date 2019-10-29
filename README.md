@@ -31,6 +31,7 @@ The following are required before installing CASP.
    - Register for the Blockcypher site.
    - After verifying your email, it opens a page that displays the token.
 1. Firebase messaging token (to enable push notifications). [Contact Unbound](mailto:support@unboundtech.com) for it.
+    - For express deploy using Docker, you must [contact Unbound](mailto:support@unboundtech.com) to get access to the Docker images, even if you are not going to use a Firebase token (such as if you are not going to use push notifications). 
 
 ## Installation
 After completing the prerequisites, follow the instructions based on the installation type:
