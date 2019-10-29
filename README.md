@@ -30,7 +30,7 @@ The following are required before installing CASP.
 1. BlockCypher access token (only needed for Bitcoin ledger access). See [BlockCypher](https://accounts.blockcypher.com/signup).
    - Register for the Blockcypher site.
    - After verifying your email, it opens a page that displays the token.
-1. Firebase messaging token (to enable push notifications). Contact Unbound for it.
+1. Firebase messaging token (to enable push notifications). [Contact Unbound](mailto:support@unboundtech.com) for it.
 
 ## Installation
 After completing the prerequisites, follow the instructions based on the installation type:
