@@ -16,7 +16,11 @@ This implementation is only for demo proposes. For production, you can [Deploy C
    - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
 1. [Request](mailto:support@unboundtech.com) to be added to Unbound's Docker organization.
 1. Download or clone this repository.
-1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)).
+1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
+
+   Note: The file must not have any prefix, i.e. the file name must be *.env*.
+   
+   Note: The file must be in the same folder as *docker-compose.yml*.
 
    For example:
 
@@ -41,7 +45,13 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 	Everything is installed and working when you see this message:
     ```
     casp-bot_1 |  Starting to approve operations
-	```
+    ```
+    
+    Note: Docker takes several minutes to create the CASP system. If it hangs for too long, use `Ctrl-c` to stop the process and then run the following commands to restart:
+    ```bash
+    docker-compose down
+    docker-compose up
+    ```
 1. Open your browser and navigate to `https://localhost/caspui`. Use these credentials to log in:
     - Username: so
 	- Password: Unbound1!
