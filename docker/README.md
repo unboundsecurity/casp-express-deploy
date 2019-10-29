@@ -9,7 +9,7 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 ## 1.1. Getting Started
 
 1. Complete the [General Prerequisites](../README.md#General-Prerequsites).
-1. Install Docker Desktop CE (community edition). It must include Docker Engine version 18 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
+1. Install Docker Desktop CE (community edition). It must include Docker Engine version 19.03 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
    - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
    - Download the Docker Desktop installer and install it.
    - If you are running on Windows, enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
