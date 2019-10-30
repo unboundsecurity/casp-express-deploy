@@ -9,11 +9,18 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 ## 1.1. Getting Started
 
 1. Complete the [General Prerequisites](../README.md#General-Prerequsites).
-1. Install Docker Desktop CE (community edition). It must include Docker Engine version 19.03 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
-   - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
-   - Download the Docker Desktop installer and install it.
-   - If you are running on Windows, enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
-   - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
+1. Install Docker.
+    - For Windows:
+        - Install Docker Desktop CE (community edition). It must include Docker Engine version 19.03 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
+        - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
+        - Download the Docker Desktop installer and install it.
+        - Enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+        - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
+   - For Linux:
+        - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
+        - Follow the instructions to [install Docker Compose](https://docs.docker.com/compose/install/).
+
+       
 1. [Request](mailto:support@unboundtech.com) to be added to Unbound's Docker organization.
 1. Download or clone this repository from the [main page](https://github.com/unbound-tech/CASP-Express-Deploy) or click [here](https://github.com/unbound-tech/CASP-Express-Deploy/archive/master.zip).
 1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
