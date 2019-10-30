@@ -23,7 +23,7 @@ This implementation is only for demo proposes. For production, you can [Deploy C
        
 1. [Request](mailto:support@unboundtech.com) to be added to Unbound's Docker organization.
 1. Download or clone this repository from the [main page](https://github.com/unbound-tech/CASP-Express-Deploy) or click [here](https://github.com/unbound-tech/CASP-Express-Deploy/archive/master.zip).
-1. The downloaded repository file should be uncompressed and placed on the device where you will run Docker. The repo contains a folder called *docker* that must contain the file created in the next step. In addition, you must start Docker from this folder.
+1. The downloaded repository file should be uncompressed and placed on the device where you will run Docker. The repo contains a folder called *docker*. You must start Docker from this folder.
 1. Open a terminal and navigate to the `docker` folder.
 1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
 
