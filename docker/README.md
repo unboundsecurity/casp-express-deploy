@@ -15,7 +15,7 @@ This implementation is only for demo proposes. For production, you can [Deploy C
    - If you are running on Windows, enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
    - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
 1. [Request](mailto:support@unboundtech.com) to be added to Unbound's Docker organization.
-1. Download or clone this repository.
+1. Download or clone this repository from the [main page](https://github.com/unbound-tech/CASP-Express-Deploy) or click [here](https://github.com/unbound-tech/CASP-Express-Deploy/archive/master.zip).
 1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
 
    Note: The file must not have any prefix, i.e. the file name must be *.env*.
