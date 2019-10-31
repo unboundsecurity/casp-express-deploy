@@ -1,8 +1,8 @@
 variable "public_key_path" { default = "/home/autobuild/.ssh/id_rsa.pub" }
 variable "private_key_path" { default = "/home/autobuild/.ssh/id_rsa" }
-variable "local_path" { default = "replace it with /home/autobuild/CASP_terraform/test190819/" }
-variable "casp_rpm" { default = "replace it with casp rpm version: casp-1.0.2001.38807-RHES.x86_64.rpm" }
-variable "ukc_rpm" { default = "replace it with ekm rpm version: ekm-2.0.1907.38507-RHES.x86_64.rpm" }
+variable "local_path" { default = "replace it with path to terraform tf files/home/autobuild/CASP_terraform/test190819/" }
+variable "casp_rpm" { default = "replace it with casp rpm  casp-1.0.2001.38807-RHES.x86_64.rpm" }
+variable "ukc_rpm" { default = "replace it with ekm rpm  ekm-2.0.1907.38507-RHES.x86_64.rpm" }
 variable "access_key" { default = "replace it with AWS access_key" }
 variable "secret_key" { default = "replace it with AWS secret_key" }
 variable "path_backup_keys" { default = "/home/centos/" }
@@ -34,18 +34,7 @@ variable "aws_region" { default = "sa-east-1" }
 variable "instance_type" { default = "t2"}
 
 
-variable "casp_amis" {
-  type = "map"
-  default = {
-# CentOS 7.6
-# User: centos
-    "us-west-1" = "ami-xxxxxxxxxxxxxxxx"
-# RH 7.2
-# User: ec2-user
-    "us-west-1" = "ami-xxxxxxxxxxxxxxxx"
-    "sa-east-1" = "ami-xxxxxxxxxxxxxxxx"
-  }
-}
+variable "casp_ami" { default = "ami-xxxxxxxxxxxxxxxx"}
 
 variable "token-blockcypher-btc" { default = "replace it with blockcypher-btc token" }
 variable "token-blockcypher-btctest" { default = "replace it by blockcypher-btctest token" }

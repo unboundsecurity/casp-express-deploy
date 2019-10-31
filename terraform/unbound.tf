@@ -746,7 +746,7 @@ resource "aws_instance" "casp" {
 
   depends_on = ["aws_key_pair.auth_casp"]
 
-  ami                    = "${lookup(var.casp_amis, var.aws_region)}"
+  ami                    = "${var.casp_ami}"
   instance_type          = "${var.instance_type}.medium"
   key_name               = "${aws_key_pair.auth_casp.id}"
   subnet_id              = "${aws_subnet.public.id}"
