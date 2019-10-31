@@ -30,9 +30,10 @@ The following are required before installing CASP.
 1. BlockCypher access token (only needed for Bitcoin ledger access). See [BlockCypher](https://accounts.blockcypher.com/signup).
    - Register for the Blockcypher site.
    - After verifying your email, it opens a page that displays the token.
-1. Firebase messaging token (to enable push notifications). Contact Unbound for it.
+1. Firebase messaging token (to enable push notifications). Contact Unbound ([support@unboundtech.com](mailto:support@unboundtech.com)) for it.
+    - For express deploy using Docker, you must contact Unbound ([support@unboundtech.com](mailto:support@unboundtech.com)) to get access to the Docker images, even if you are not going to use a Firebase token (such as if you are not going to use push notifications). 
 
 ## Installation
 After completing the prerequisites, follow the instructions based on the installation type:
-- [Docker](./docker)
-- [Terraform](./terraform) (under construction)
+- [Docker](./casp-docker)
+- [Terraform](./casp-terraform) (under construction)
