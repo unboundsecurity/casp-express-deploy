@@ -12,6 +12,7 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 1. Install Docker.
     - For Windows:
         - Install Docker Desktop CE (community edition). It must include Docker Engine version 19.03 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
+        - Use the default Docker settings during installation.
         - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
         - Download the Docker Desktop installer and install it.
         - Enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
@@ -27,7 +28,7 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 1. Open a terminal and navigate to the `casp-docker` folder.
 1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
 
-   Note: The file must not have any prefix, i.e. the file name must be *.env*.
+   Note: The file must not have any prefix, i.e. the file name must be *.env*. If you are on Windows and it doesn't let you create a file with this name, use *.env.* (with a period at the end) for the name, then click OK twice, and it will create the *.env* file.
    
    Note: The file must be in the same folder as *docker-compose.yml*.
 
