@@ -39,7 +39,7 @@ This implementation is only for demo proposes. For production, you can [Deploy C
     BLOCKCYPHER_TOKEN=<Replace with BlockCypher access token>
     FIREBASE_TOKEN=<Replace with Firebase token provided by Unbound>
    ```
-1. Start Docker on your device.
+1. For Windows, start Docker on your device.
 
    You can check if Docker is running with the command `docker info`. If it returns an error, then it is not running. Otherwise, it returns status information about the Docker installation.
 1. Run this command to log into Docker:
