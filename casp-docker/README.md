@@ -4,19 +4,33 @@ This project provides a quick and easy way to evaluate the Unbound [CASP](https:
 
 **Note: This project is intended to be used for POCs.**
 
-This implementation is only for demo proposes. For production, you can [Deploy CASP Using Terraform](../terraform/README.md).
+This implementation is only for demo proposes. For production, you can [Deploy CASP Using Terraform](../casp-terraform/README.md).
 
 ## 1.1. Getting Started
 
 1. Complete the [General Prerequisites](../README.md#General-Prerequsites).
-1. Install Docker Desktop CE (community edition). It must include Docker Engine version 18 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
-   - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
-   - Download the Docker Desktop installer and install it.
-   - If you are running on Windows, enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
-   - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
+1. Install Docker.
+    - For Windows:
+        - Install Docker Desktop CE (community edition). It must include Docker Engine version 19.03 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
+        - Use the default Docker settings during installation.
+        - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
+        - Download the Docker Desktop installer and install it.
+        - Enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+        - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
+   - For Linux:
+        - If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
+        - Follow the instructions to [install Docker Compose](https://docs.docker.com/compose/install/).
+
+       
 1. [Request](mailto:support@unboundtech.com) to be added to Unbound's Docker organization.
-1. Download or clone this repository.
-1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)).
+1. Download or clone this repository from the [main page](https://github.com/unbound-tech/CASP-Express-Deploy) or click [here](https://github.com/unbound-tech/CASP-Express-Deploy/archive/master.zip).
+1. The downloaded repository file should be uncompressed and placed on the device where you will run Docker. The download contains a folder called *casp-docker*. You must start Docker from this folder.
+1. Open a terminal and navigate to the `casp-docker` folder.
+1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
+
+   Note: The file must not have any prefix, i.e. the file name must be *.env*. If you are on Windows and it doesn't let you create a file with this name, use *.env.* (with a period at the end) for the name, then click OK twice, and it will create the *.env* file.
+   
+   Note: The file must be in the same folder as *docker-compose.yml*.
 
    For example:
 
@@ -25,8 +39,9 @@ This implementation is only for demo proposes. For production, you can [Deploy C
     BLOCKCYPHER_TOKEN=<Replace with BlockCypher access token>
     FIREBASE_TOKEN=<Replace with Firebase token provided by Unbound>
    ```
-1. Start Docker on your device.
-1. Open a terminal and navigate to the `docker` folder.
+1. For Windows, start Docker on your device.
+
+   You can check if Docker is running with the command `docker info`. If it returns an error, then it is not running. Otherwise, it returns status information about the Docker installation.
 1. Run this command to log into Docker:
     ```bash
 	docker login
@@ -41,7 +56,13 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 	Everything is installed and working when you see this message:
     ```
     casp-bot_1 |  Starting to approve operations
-	```
+    ```
+    
+    Note: Docker takes several minutes to create the CASP system. If it hangs for too long, use `Ctrl-c` to stop the process and then run the following commands to restart:
+    ```bash
+    docker-compose down
+    docker-compose up
+    ```
 1. Open your browser and navigate to `https://localhost/caspui`. Use these credentials to log in:
     - Username: so
 	- Password: Unbound1!
