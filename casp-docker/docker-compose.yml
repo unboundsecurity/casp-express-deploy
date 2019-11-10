@@ -2,6 +2,7 @@ version: '3'
 services:
   ukc-ep:
     image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    container_name: ukc-ep
     restart: always
     ports:
      - "8443:8443"
@@ -9,16 +10,18 @@ services:
     hostname: ukc-ep
     environment:
       UKC_NOCERT: 'true'
-      UKC_PASSWORD: 'Password1!'
+      UKC_PASSWORD: 'Unbound1!'
       UKC_PARTITION: 'casp'
       UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
   ukc-partner:
     image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    container_name: ukc-partner
     restart: always
     command: ["partner", "ukc-ep", "ukc-aux"]
     hostname: ukc-partner
   ukc-aux:
     image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    container_name: ukc-aux
     restart: always
     command: ["aux", "ukc-ep", "ukc-partner"]
     hostname: ukc-aux
@@ -27,6 +30,7 @@ services:
       - "ukc-partner"
   db:
     image: postgres:11
+    container_name: db
     restart: always
     ports:
       - 5432:5432
@@ -36,6 +40,7 @@ services:
       POSTGRES_PASSWORD: 'DBPassword'
   casp:
     image: "unboundcasp/casp:${CASP_VERSION:-latest}"
+    container_name: casp
     restart: always
     ports:
       - "443:443"
@@ -45,7 +50,6 @@ services:
       PGUSER: 'postgres'
       PGPASSWORD: 'DBPassword'
       UKC_EP: 'ukc-ep'
-      UKC_PASSWORD: 'Password1!'
       UKC_PARTITION: 'casp'
       UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
       CASP_FIREBASE_TOKEN: ${FIREBASE_TOKEN}
@@ -60,6 +64,7 @@ services:
       - "db"
   casp-bot:
     image: "unboundcasp/casp-bot:${CASP_VERSION:-latest}"
+    container_name: casp-bot
     restart: always
     environment:
       BOT_NAME: 'casp-bot'
