@@ -1,7 +1,7 @@
 version: '3'
 services:
   ukc-ep:
-    image: "unboundcasp/ukc:${CASP_VERSION:-latest}"
+    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
     restart: always
     ports:
      - "8443:8443"
@@ -11,13 +11,14 @@ services:
       UKC_NOCERT: 'true'
       UKC_PASSWORD: 'Password1!'
       UKC_PARTITION: 'casp'
+      UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
   ukc-partner:
-    image: "unboundcasp/ukc:${CASP_VERSION:-latest}"
+    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
     restart: always
     command: ["partner", "ukc-ep", "ukc-aux"]
     hostname: ukc-partner
   ukc-aux:
-    image: "unboundcasp/ukc:${CASP_VERSION:-latest}"
+    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
     restart: always
     command: ["aux", "ukc-ep", "ukc-partner"]
     hostname: ukc-aux
@@ -46,6 +47,7 @@ services:
       UKC_EP: 'ukc-ep'
       UKC_PASSWORD: 'Password1!'
       UKC_PARTITION: 'casp'
+      UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
       CASP_FIREBASE_TOKEN: ${FIREBASE_TOKEN}
       INFURA_TOKEN: ${INFURA_TOKEN}
       BLOCKCYPHER_TOKEN: ${BLOCKCYPHER_TOKEN}
