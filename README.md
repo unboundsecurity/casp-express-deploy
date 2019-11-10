@@ -8,6 +8,8 @@ CASP can be rapidly deployed using one of these methods:
 
 The rapid installation process is described below. For the full installation process, refer to the [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
 
+Note: If you are trying to demo the [UKC Express Deploy](https://github.com/unbound-tech/UKC-Express-Deploy), you cannot run it and the CASP Express Deploy at the same time.
+
 ## Overview
 
 The CASP implementation is comprised of the following components:
