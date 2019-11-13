@@ -20,15 +20,15 @@ variable "provide_ssh" {
 variable "casp_public_key_path" { default = "/home/<your user>/.ssh/<public key>" }
 variable "casp_private_key_path" { default = "/home/<your user>/.ssh/<private key>" }
 variable "key_name_3" { default = "Terraform-CASP-key" }
-variable "casp_backup_key_path" { default = "casp_backup.pem" }
+variable "casp_backup_key_path" { default = "<casp backup pem file>" }
 variable "casp_pac" { default = "casp-<CASP version>-RHES.x86_64.rpm" }
-variable "instance_type_casp" { default = "t3.medium" }
+variable "instance_type_casp" { default = "<AWS instance type>" }
 
-variable "token-blockcypher-btc" { default = "replace it with blockcypher-btc token" }
-variable "token-blockcypher-btctest" { default = "replace it by blockcypher-btctest token" }
+variable "token-blockcypher-btc" { default = "<blockcypher-btc token>" }
+variable "token-blockcypher-btctest" { default = "<blockcypher-btctest token>" }
 
-variable "token-infura-eth" { default = "replace it with infura_eth token" }
-variable "token-infura-ethtest" { default = "replace it with infura_ethtest token" }
+variable "token-infura-eth" { default = "<infura_eth token>" }
+variable "token-infura-ethtest" { default = "<infura_ethtest token>" }
 
 #Firebase push notifaction push token
 variable "firebase_apikey" {default = "Place your firebase mobile  push token here" }
