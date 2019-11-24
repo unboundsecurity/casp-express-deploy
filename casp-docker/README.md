@@ -43,10 +43,15 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 
    You can check if Docker is running with the command `docker info`. If it returns an error, then it is not running. Otherwise, it returns status information about the Docker installation.
 1. Run this command to log into Docker:
-    ```bash
+    ````bash
 	docker login
-	```
-	Enter the credentials that you created for the Docker Hub website.
+    ````
+    Enter the credentials that you created for the Docker Hub website.
+		
+    After successful login you see:
+    ````
+    Login Succeeded
+    ````
 1. Run Docker to create the CASP container:
     ```bash
     docker-compose up
@@ -68,6 +73,8 @@ This implementation is only for demo proposes. For production, you can [Deploy C
 	- Password: Unbound1!
 
 **Congratulations! CASP is now running.**
+
+You can now explore the web interface as described in the next section.
 
 ## 1.2. Explore the Web Interface
 The Web UI provides the following screens:
