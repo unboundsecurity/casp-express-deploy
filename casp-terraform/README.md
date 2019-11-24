@@ -24,15 +24,15 @@
 1. Install it.
 
 **Step 3: Download and configure the CASP repo**
+
 All of these steps should be executed on your AWS server.
 1. Download or clone the CASP repo. 
 
     It contains these files:
     - variables.tf - Terraform configuration file.
     - unbound.tf - Terraform configuration file.
-    - CASP_installer.sh - installer script.
 	
-1. Request the CASP and UKC packages from Unbound. For example, on CentOS, you receive links to download these files:	
+1. Request the CASP and UKC packages from Unbound. For example, on CentOS, you receive links to download these files:
     - casp-1.0.XXX.YYYYY-RHES.x86_64.rpm
     - ekm-2.0.XXX.YYYYY-RHES.x86_64.rpm
 
@@ -41,7 +41,7 @@ All of these steps should be executed on your AWS server.
    ssh-keygen
    ```
    Use the default name when generating the key (i.e. when asked to choose a name for the key, just press **Enter**).
-3. Edit *variables.tf*. In the file, set all the following variables:
+3. Edit *variables.tf*. In the file, set all the following variables.
 	- variable "key_name" – the name shown in key name in the AWS console. 
 	- variable "local_path" – path where you put the RPM installer files.
 	- variable "casp_rpm_version_name" – casp rpm full name.
@@ -51,7 +51,7 @@ All of these steps should be executed on your AWS server.
 	- variable "token-infura-eth" – ETH Infura token (from https://infura.io/dashboard). 
 	- variable "token-infura-ethtest" – ETHTEST Infura token (from https://infura.io/dashboard).
 	- variable "firebase_apikey" - token for push notifications for mobile. 
-4. Locate your *Access Key* and *Secret Access Key* on AWS:
+4. Locate your *Access Key* and *Secret Access Key* on AWS.
     - Log into your [AWS Management Console](https://console.aws.amazon.com/console).
 	- Click on your username at the top right of the page.
 	- Click on the **Security Credentials** link from the drop-down menu.
@@ -60,8 +60,14 @@ All of these steps should be executed on your AWS server.
 5. Edit *unbound.tf*. Set the following variables:
 	- access_key - replace it by AWS access_key.
 	- secret_key - replace it by AWS secret_key.
-6. Launch Terraform using the Unbound script:
+6. Generate the CASP backup key.
     ```
-    ./CASP_installer.sh 
+    openssl genrsa 2048 > key.pem
+    openssl rsa -in key.pem -pubout > casp_backup.pem
     ```
-    
+6. Launch Terraform using these commands.
+    ```
+    terraform init
+    terraform destroy -auto-approve
+    terraform apply
+    ```    
