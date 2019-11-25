@@ -6,7 +6,7 @@ This project provides a quick and easy way to evaluate the Unbound [CASP](https:
 
 **Note**: If you are trying to install the [UKC Express Deploy](https://github.com/unbound-tech/UKC-Express-Deploy), you cannot run it and the CASP Express Deploy at the same time.
 
-## 1.1. Getting Started
+## 1.1. Installation
 
 Use these instructions to get CASP running using Docker.
 
@@ -63,7 +63,7 @@ Use these instructions to get CASP running using Docker.
 **Congratulations! CASP is now running.**
 
 ## 1.2. Next Steps
-After installation, you can try some of these:
+After installation, you can try some of these tasks:
 1. [Explore the web interface](./#webint)
 1. [Create and activate a mobile client](./#caspclient)
 1. [Develop your own application using the CASP SDK](./#caspsdk)
