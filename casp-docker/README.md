@@ -4,6 +4,8 @@ This project provides a quick and easy way to evaluate the Unbound [CASP](https:
 
 **Note: This project is intended to be used for POCs, demoes and development. For production, you can [Deploy CASP Using Terraform](../casp-terraform/README.md).**
 
+**Note**: If you are trying to install the [UKC Express Deploy](https://github.com/unbound-tech/UKC-Express-Deploy), you cannot run it and the CASP Express Deploy at the same time.
+
 ## 1.1. Getting Started
 
 Use these instructions to get CASP running using Docker.
