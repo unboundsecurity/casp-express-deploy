@@ -69,8 +69,8 @@ After installation, you can try some of these:
 <a name="webint"></a>
 ## 1.2.1. Explore the Web Interface
 Open your browser and navigate to `https://localhost/caspui`. Use these credentials to log in:
-    - Username: so
-    - Password: Unbound1!
+- Username: so
+- Password: Unbound1!
 
 The Web UI provides the following screens:
 
