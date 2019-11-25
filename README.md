@@ -28,7 +28,7 @@ The CASP implementation is comprised of the following components:
 4. **CASP Bot** - a CASP participant that automatically approves operations.
 5. **CASP Web UI** - a web interface used to manage CASP.
 
-Both deployment options install all of the above components. After installation, you can log into the CASP web interface and start using CASP!
+Both deployment options install the above components, except Terraform does not install the CASP bot. After installation, you can log into the CASP web interface and start using CASP!
 
 <a name="General-Prerequsites"></a>
 ## General Prerequsites
