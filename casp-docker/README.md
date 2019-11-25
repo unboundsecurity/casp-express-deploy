@@ -66,7 +66,7 @@ Use these instructions to get CASP running using Docker.
 After installation, you can try some of these:
 1. [Explore the web interface](./#webint)
 1. [Create and activate a mobile client](./#caspclient)
-
+1. [Develop your own application using the CASP SDK](./#caspsdk)
 
 <a name="webint"></a>
 ## 1.2.1. Explore the Web Interface
@@ -88,6 +88,14 @@ For more information on how to use the web interface, see [CASP User Guide](http
 ## 1.2.2. Create and activate a mobile client
 
 Information about installing the CASP mobile app can be found [here](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Mobile_App.htm).
+
+<a name"caspsdk"></a>
+## 1.2.3. Develop your own application using the CASP SDK
+
+You can use the CASP SDK to develop your own application. See the [CASP Developers Guide](https://www.unboundtech.com/docs/CASP/CASP_Developers_Guide-HTML/Content/Products/Unbound_Cover_Page.htm) for more information and a full API reference.
+
+Also, refer to the [CASP BYOW JS Demo](https://github.com/unbound-tech/CASP-BYOW-JS-Demo) for sample code.
+
 
 ## 1.3. Restarting/Updating Docker
 
