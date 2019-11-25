@@ -36,7 +36,7 @@ Use these instructions to get CASP running using Docker.
    ```
 1. Check that Docker is running.
 
-You can check if Docker is running with the command `docker info`. If it returns an error, then it is not running. Otherwise, it returns status information about the Docker installation.
+    You can check if Docker is running with the command `docker info`. If it returns an error, then it is not running. Otherwise, it returns status information about the Docker installation.
 1. Run this command to log into Docker:
     ````bash
 	docker login
@@ -80,7 +80,7 @@ The Web UI provides the following screens:
 - Operations - lists all quorum operations for the account.
 - System - provides status information about various components in the system.
 
-For more information on how to use the web interface, see [UKC User Guide](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/UI/A1.html).
+For more information on how to use the web interface, see [CASP User Guide](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Web_Interface.htm).
 
 <a name="caspclient"></a>
 ## 1.2.2. Create and activate a mobile client
@@ -141,7 +141,7 @@ If you need to turn on virtualization on your Windows device, use these instruct
 
 ### 1.5.3. Docker hangs when starting
     
-Docker takes several minutes to create the UKC system. If it hangs for too long, use `Ctrl-c` to stop the process and then run the following commands to restart:
+Docker takes several minutes to create the CASP system. If it hangs for too long, use `Ctrl-c` to stop the process and then run the following commands to restart:
 ```bash
 docker-compose down
 docker-compose up
