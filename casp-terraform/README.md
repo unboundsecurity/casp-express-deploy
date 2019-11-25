@@ -65,6 +65,7 @@ All of these steps should be executed on your AWS server.
     openssl genrsa 2048 > key.pem
     openssl rsa -in key.pem -pubout > casp_backup.pem
     ```
+    The CASP backup key can be used to restore the system, as described [here](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Key_Backup_and_Restore.htm).
 6. Launch Terraform using these commands.
     ```
     terraform init
