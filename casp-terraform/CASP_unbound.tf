@@ -523,8 +523,8 @@ resource "null_resource" "ekm_boot_ep" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo + sudo /opt/ekm/bin/ekm_boot_ep.sh -s ep -p partner -w ${var.password1} -f",
-      "sudo /opt/ekm/bin/ekm_boot_ep.sh -s ep -p partner -w ${var.password1} -f",
+      "echo + sudo /opt/ekm/bin/ekm_boot_ep.sh -s ep -p partner -w ${var.so_password} -f",
+      "sudo /opt/ekm/bin/ekm_boot_ep.sh -s ep -p partner -w ${var.so_password} -f",
       "echo + sleep 20",
       "sleep 20",
       "echo + sudo su - -c 'nohup service ekm start &'",
@@ -633,8 +633,8 @@ resource "null_resource" "ekm_add-aux" {
 
     inline = [
       "uname -a",
-      "echo + sudo ucl server create -a aux -w ${var.password1}",
-      "yes Y | sudo ucl server create -a aux -w ${var.password1}",
+      "echo + sudo ucl server create -a aux -w ${var.so_password}",
+      "yes Y | sudo ucl server create -a aux -w ${var.so_password}",
     ]
   }
 
@@ -683,12 +683,12 @@ resource "null_resource" "ekm_partitions_ep" {
     inline = [
       "echo + ucl server test",
       "ucl server test",
-      "echo + sudo ucl partition create -p partition1 -w ${var.password1} -s ${var.password1}",
-      "sudo ucl partition create -p partition1 -w ${var.password1} -s ${var.password1}",
-      "echo + sudo ucl user reset-pwd -p partition1 -n user -w ${var.password1} -d ${var.password1}",
-      "sudo ucl user reset-pwd -p partition1 -n user -w ${var.password1} -d ${var.password1}",
-      "echo + sudo ucl system-settings set -k no-cert -v 1 -w ${var.password1}",
-      "sudo ucl system-settings set -k no-cert -v 1 -w ${var.password1}",
+      "echo + sudo ucl partition create -p partition1 -w ${var.so_password} -s ${var.so_password}",
+      "sudo ucl partition create -p partition1 -w ${var.so_password} -s ${var.so_password}",
+      "echo + sudo ucl user reset-pwd -p partition1 -n user -w ${var.so_password} -d ${var.so_password}",
+      "sudo ucl user reset-pwd -p partition1 -n user -w ${var.so_password} -d ${var.so_password}",
+      "echo + sudo ucl system-settings set -k no-cert -v 1 -w ${var.so_password}",
+      "sudo ucl system-settings set -k no-cert -v 1 -w ${var.so_password}",
     ]
   }
 }
@@ -845,7 +845,7 @@ resource "aws_db_instance" "caspdb" {
   db_subnet_group_name    = "${aws_db_subnet_group.caspdb.id}"
   multi_az                = false
   username                = "postgres"
-  password                = "${var.password1}"
+  password                = "${var.so_password}"
   storage_encrypted       = true
   storage_type            = "standard"
   vpc_security_group_ids  = ["${aws_security_group.caspdb.id}"]
@@ -946,13 +946,13 @@ resource "null_resource" "casp_config" {
 # Database Settings (PostgreSQL) - Uncomment if using PostgreSQL
 database.url=jdbc:postgresql://caspdb:5432/casp
 database.user=postgres
-database.password=${var.password1}
+database.password=${var.so_password}
 database.driver=org.postgresql.Driver
 database.driverfile=/opt/casp/jdbc/postgresql-42.2.5.jar
 # UKC Settings
 ukc.url=https://ep/kmip
 ukc.user=user@casp
-ukc.password=${var.password1}
+ukc.password=${var.so_password}
 #Fire base
 firebase.apikey=${var.firebase_apikey}
 # APNS Settings (for Apple push notification) apns.certificate.file=<APNS certificate> apns.certificate.password=<APNS certificate password> apns.production=<true if this is a production
@@ -964,8 +964,8 @@ CASPCONF
     inline = [
       "echo + sudo yum -y install postgresql",
       "sudo yum -y install postgresql",
-      "PGPASSWORD=\"${var.password1}\" psql -h caspdb -U postgres -c 'CREATE DATABASE casp;'",
-      "PGPASSWORD=\"${var.password1}\" psql -h caspdb -U postgres casp < /opt/casp/sql/casp-postgresql.sql",
+      "PGPASSWORD=\"${var.so_password}\" psql -h caspdb -U postgres -c 'CREATE DATABASE casp;'",
+      "PGPASSWORD=\"${var.so_password}\" psql -h caspdb -U postgres casp < /opt/casp/sql/casp-postgresql.sql",
       "echo + sudo mv /tmp/casp.conf /etc/unbound/casp.conf",
       "sudo mv /tmp/casp.conf /etc/unbound/casp.conf",
       "echo + edit /etc/unbound/btc.conf",
@@ -995,9 +995,9 @@ CASPCONF
       "echo + nohup systemctl restart casp.tomcat.service",
       "sudo su - -c 'nohup systemctl restart casp.tomcat.service &'",
       "echo + sudo /usr/bin/casp_setup_ukc --ukc-url https://ep --ukc-user user@partition1 --ukc-password ...",
-      "sudo /usr/bin/casp_setup_ukc --ukc-url https://ep --ukc-user user@partition1 --ukc-password ${var.password1}",
+      "sudo /usr/bin/casp_setup_ukc --ukc-url https://ep --ukc-user user@partition1 --ukc-password ${var.so_password}",
       "echo + sudo /usr/bin/casp_setup_db --db-url jdbc:postgresql://caspdb:5432/casp --db-user postgres --db-password ...",
-      "sudo /usr/bin/casp_setup_db --db-url jdbc:postgresql://caspdb:5432/casp --db-user postgres --db-password ${var.password1} --db-driver org.postgresql.Driver --db-driver-path /opt/casp/jdbc/postgresql-42.2.5.jar",
+      "sudo /usr/bin/casp_setup_db --db-url jdbc:postgresql://caspdb:5432/casp --db-user postgres --db-password ${var.so_password} --db-driver org.postgresql.Driver --db-driver-path /opt/casp/jdbc/postgresql-42.2.5.jar",
       "echo +  curl -k https://localhost/casp/api/v1.0/mng/status?withDetails=true",
       "curl -k https://localhost/casp/api/v1.0/mng/status?withDetails=true",
     ]
