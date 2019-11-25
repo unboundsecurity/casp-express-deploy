@@ -28,7 +28,7 @@ The CASP implementation is comprised of the following components:
 4. **CASP Bot** - a CASP participant that automatically approves operations.
 5. **CASP Web UI** - a web interface used to manage CASP.
 
-Both deployment options install the above components, except Terraform does not install the CASP bot. After installation, you can log into the CASP web interface and start using CASP!
+Both deployment options install the above components, except that Terraform does not install the CASP bot. After installation, you can log into the CASP web interface and start using CASP!
 
 <a name="General-Prerequsites"></a>
 ## General Prerequsites
@@ -41,7 +41,6 @@ The following are required before installing CASP.
    - Register for the Blockcypher site.
    - After verifying your email, it opens a page that displays the token.
 1. Firebase messaging token (to enable push notifications). Contact Unbound ([support@unboundtech.com](mailto:support@unboundtech.com)) for it.
-    - For express deploy using Docker, you must contact Unbound ([support@unboundtech.com](mailto:support@unboundtech.com)) to get access to the Docker images, even if you are not going to use a Firebase token (such as if you are not going to use push notifications). 
 
 ## Installation
 After completing the prerequisites, follow the instructions based on the installation type:
