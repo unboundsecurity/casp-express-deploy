@@ -327,10 +327,40 @@ resource "null_resource" "install_java_aux" {
     "aws_route53_record.aux",
   ]
 
+ provisioner "remote-exec" {
+    inline = [
+	 "sudo touch /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo chmod -R 777 /etc/yum.repos.d/adoptopenjdk.repo",
+      "cat <<EOF >/etc/yum.repos.d/adoptopenjdk.repo\n[AdoptOpenJDK]\nname=AdoptOpenJDK\nbaseurl=http://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/7/$(uname -m)\nenabled=1\ngpgcheck=1\ngpgkey=https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public\nEOF",
+	  "sudo chmod -R 666 /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo yum install adoptopenjdk-11-hotspot.x86_64 -y"
+    ]
+  }
+}
+
+resource "null_resource" "install_java_casp" {
+  connection {
+    bastion_host = "${aws_instance.casp.public_ip}"
+    bastion_user = "${var.os_user_0}"
+    bastion_private_key = "${file(var.casp_private_key_path)}"
+    host         = "${aws_instance.casp.private_ip}"
+    type         = "ssh"
+    user         = "${var.os_user_0}"
+    private_key  = "${file(var.casp_private_key_path)}"
+  }
+
+  depends_on = [
+    "aws_instance.casp",
+    "aws_route53_record.casp",
+  ]
+
   provisioner "remote-exec" {
     inline = [
-      "echo + sudo yum -y install java",
-      "sudo yum -y install java",
+	 "sudo touch /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo chmod -R 777 /etc/yum.repos.d/adoptopenjdk.repo",
+      "cat <<EOF >/etc/yum.repos.d/adoptopenjdk.repo\n[AdoptOpenJDK]\nname=AdoptOpenJDK\nbaseurl=http://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/7/$(uname -m)\nenabled=1\ngpgcheck=1\ngpgkey=https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public\nEOF",
+	  "sudo chmod -R 666 /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo yum install adoptopenjdk-11-hotspot.x86_64 -y"
     ]
   }
 }
@@ -355,8 +385,11 @@ resource "null_resource" "install_java_partner" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo + sudo yum -y install java",
-      "sudo yum -y install java",
+	  "sudo touch /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo chmod -R 777 /etc/yum.repos.d/adoptopenjdk.repo",
+      "cat <<EOF >/etc/yum.repos.d/adoptopenjdk.repo\n[AdoptOpenJDK]\nname=AdoptOpenJDK\nbaseurl=http://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/7/$(uname -m)\nenabled=1\ngpgcheck=1\ngpgkey=https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public\nEOF",
+	  "sudo chmod -R 666 /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo yum install adoptopenjdk-11-hotspot.x86_64 -y"
     ]
   }
 }
@@ -379,8 +412,11 @@ resource "null_resource" "install_java_ep" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo + sudo yum -y install java",
-      "sudo yum -y install java",
+	   "sudo touch /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo chmod -R 777 /etc/yum.repos.d/adoptopenjdk.repo",
+      "cat <<EOF >/etc/yum.repos.d/adoptopenjdk.repo\n[AdoptOpenJDK]\nname=AdoptOpenJDK\nbaseurl=http://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/7/$(uname -m)\nenabled=1\ngpgcheck=1\ngpgkey=https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public\nEOF",
+	  "sudo chmod -R 666 /etc/yum.repos.d/adoptopenjdk.repo",
+	  "sudo yum install adoptopenjdk-11-hotspot.x86_64 -y"
     ]
   }
 }
@@ -855,7 +891,7 @@ resource "null_resource" "casp_preconfig" {
     private_key = "${file(var.casp_private_key_path)}"
   }
 
-  depends_on = ["aws_instance.casp"]
+  depends_on = ["aws_instance.casp", null_resource.install_java_casp]
 
   provisioner "remote-exec" {
     inline = [
