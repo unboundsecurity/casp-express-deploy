@@ -12,6 +12,10 @@ Note: If you are trying to demo the [UKC Express Deploy](https://github.com/unbo
 
 ## Overview
 
+The system architecture is shown in the following figure.
+
+![CASP System](images/casp_arch.png)
+
 The CASP implementation is comprised of the following components:
 
 1. **UKC** - Unbound Key Managment servers, including an Entry Point, Partner and Auxiliary server.
