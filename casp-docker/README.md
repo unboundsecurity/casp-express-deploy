@@ -149,14 +149,7 @@ If you need to turn on virtualization on your Windows device, use these instruct
 - Enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
 - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
 
-### 1.5.3. Docker hangs when starting
-    
-Docker takes several minutes to create the CASP system. If it hangs for too long, use `Ctrl-c` to stop the process and then run the following commands to restart:
-```bash
-docker-compose down
-docker-compose up
-```
-### 1.5.4. CASP logs
+### 1.5.3. CASP logs
 
 You can see the CASP log files by logging into the Docker container and then finding the CASP logs. See [here](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Audit_and_Logging.htm) for more information about the CASP logs.
 
