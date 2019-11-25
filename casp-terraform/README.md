@@ -92,8 +92,8 @@ You can use the CASP SDK to develop your own application. See the [CASP Develope
 
 Also, refer to the [CASP BYOW JS Demo](https://github.com/unbound-tech/CASP-BYOW-JS-Demo) for sample code.
 
-## 1.3 Terminating UKC
-Use this command to terminate UKC.
+## 1.3 Terminating CASP
+Use this command to terminate CASP.
    ```
    $ terraform destroy
    ```
