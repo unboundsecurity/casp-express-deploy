@@ -5,7 +5,7 @@ Unbound’s Crypto Asset Security Platform (“**CASP**”) provides the advance
 CASP can be rapidly deployed using one of these methods:
 - [Docker](https://hub.docker.com/?overlay=onboarding)
     - Install CASP in a container.
-    - This method is intended for POCs, demoes and development.
+    - This method is intended for POCs, demos and development.
     - The complete system runs on a single device.
 - [Terraform](https://www.terraform.io/downloads.html)
     - Use code to build the CASP infrastructure. 
