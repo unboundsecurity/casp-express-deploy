@@ -173,4 +173,4 @@ sudo chmod +x /usr/local/docker-compose
 ```
 
 ## 1.7 Docker License
-See [here](https://docs.docker.com/docker-for-windows/opensource/) for informatoin about the Docker licensing.
+See [here](https://docs.docker.com/docker-for-windows/opensource/) for information about Docker licensing.
