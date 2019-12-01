@@ -171,3 +171,6 @@ sudo curl -L \
      -o /usr/local/docker-compose
 sudo chmod +x /usr/local/docker-compose
 ```
+
+## 1.7 Docker License
+See [here](https://docs.docker.com/docker-for-windows/opensource/) for informatoin about the Docker licensing.
