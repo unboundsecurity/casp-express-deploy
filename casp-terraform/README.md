@@ -114,3 +114,5 @@ This release has these associated documents:
 
 You can see the CASP log files by logging into the Docker container and then finding the CASP logs. See [here](https://www.unboundtech.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Audit_and_Logging.htm) for more information about the CASP logs.
 
+## 1.6 Terraform License
+See [here](https://github.com/hashicorp/terraform/blob/master/LICENSE) for information about the Terraform license.
