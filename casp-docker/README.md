@@ -12,7 +12,7 @@ Use these instructions to get CASP running using Docker.
 
 1. Complete the [General Prerequisites](../README.md#General-Prerequsites).
 1. If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
-1. [Contact Unbound](mailto:support@unboundtech.com) and provide us with your Docker username to get access to the Docker images.
+1. [Contact Unbound](https://www.unboundtech.com/company/contact-us/) and provide us with your Docker username to get access to the Docker images.
 1. Install Docker.
     - For Windows:
         - Install Docker Desktop CE (community edition). It must include Docker Engine version 19.03 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
