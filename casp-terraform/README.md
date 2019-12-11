@@ -22,7 +22,7 @@ All of these steps should be executed on your AWS server.
     - CASP_variables.tf - Terraform configuration file.
     - CASP_unbound.tf - Terraform configuration file.
 	
-1. [Contact Unbound](mailto:support@unboundtech.com) to get links to download the **UKC server** and **CASP server** packages for RedHat. The packages have these formats:
+1. [Contact Unbound](https://www.unboundtech.com/company/contact-us/) to get links to download the **UKC server** and **CASP server** packages for RedHat. The packages have these formats:
     - casp-1.0.XXX.YYYYY-RHES.x86_64.rpm
     - ekm-2.0.XXX.YYYYY-RHES.x86_64.rpm
 
