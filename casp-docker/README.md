@@ -59,7 +59,7 @@ Use these instructions to get CASP running using Docker.
 	
 	Everything is installed and working when you see this message:
     ```
-    casp-bot_1 |  Starting to approve operations
+    casp-bot |  Starting to approve operations
     ```
 
 **Congratulations! CASP is now running.**
