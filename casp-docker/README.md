@@ -23,8 +23,11 @@ Use these instructions to get CASP running using Docker.
        - Install Docker Desktop (community edition) v2.1.0.5 or newer. Follow the instructions to [install Docker Desktop](https://docs.docker.com/compose/install/).
 
 1. Download or clone this repository from the [main page](https://github.com/unbound-tech/CASP-Express-Deploy) or click [here](https://github.com/unbound-tech/CASP-Express-Deploy/archive/master.zip).
-1. The downloaded repository file should be uncompressed and placed on the device where you will run Docker. The download contains a folder called *casp-docker*. You must start Docker from this folder.
-1. Open a terminal and navigate to the `casp-docker` folder.
+1. If you downloaded a compressed (*.zip*) file, uncompress it. 
+1. The download contains a folder called *casp-docker*. Open a terminal and navigate to the `casp-docker` folder.
+
+    **Note: All subsequent commands are run from a terminal from this directory.**
+1. Start Docker.
 1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
 
    Note: The file must not have any prefix, i.e. the file name must be *.env*. If you are on Windows and it doesn't let you create a file with this name, use *.env.* (with a period at the end) for the name, then click OK twice, and it will create the *.env* file.
