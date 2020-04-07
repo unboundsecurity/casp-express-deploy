@@ -52,6 +52,7 @@ Use these instructions to get CASP running using Docker.
     Login Succeeded
     ````
 1. Run Docker to create the CASP container:
+
     **Note:** If you are restarting or trying to update CASP Express Deploy, refer to [Restarting/Updating Docker](#update).
     
     ```bash
