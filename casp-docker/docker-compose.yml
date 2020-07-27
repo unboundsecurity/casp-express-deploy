@@ -1,7 +1,7 @@
 version: '3'
 services:
   ukc-ep:
-    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    image: "unboundukc/ukc-vhsm:${CASP_VERSION:-latest}"
     container_name: ukc-ep
     restart: always
     ports:
@@ -14,13 +14,13 @@ services:
       UKC_PARTITION: 'casp'
       UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
   ukc-partner:
-    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    image: "unboundukc/ukc-vhsm:${CASP_VERSION:-latest}"
     container_name: ukc-partner
     restart: always
     command: ["partner", "ukc-ep", "ukc-aux"]
     hostname: ukc-partner
   ukc-aux:
-    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    image: "unboundukc/ukc-vhsm:${CASP_VERSION:-latest}"
     container_name: ukc-aux
     restart: always
     command: ["aux", "ukc-ep", "ukc-partner"]
