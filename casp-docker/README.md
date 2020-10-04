@@ -37,8 +37,8 @@ Use these instructions to get CASP running using Docker.
    For example:
 
    ```ini
-    INFURA_TOKEN=<Replace with Infura access token>
-    BLOCKCYPHER_TOKEN=<Replace with BlockCypher access token>
+    INFURA_PROJECTID=<Replace with Infura project ID>
+    BLOCKSET_TOKEN=<Replace with Blockset access token>
     FIREBASE_TOKEN=<Replace with Firebase token provided by Unbound>
    ```
 1. Check that Docker is running.
