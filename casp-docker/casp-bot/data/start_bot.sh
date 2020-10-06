@@ -37,25 +37,29 @@ find_casp_account() {
       --header 'content-type: application/json' \
     | python -m json.tool | grep "id" | awk "{print \$NF}" | sed -e 's/"//' | sed -e 's/"//' | sed -e 's/,//')
   done
+  echo "account_id = $account_id"
 }
 
 add_bot_participant() {
   find_casp_account
   echo "Creating BOT participant..."
+  BOT_INDEX=${HOSTNAME##*-}
   until $([ ! -z "$bot_id" ]); do
     bot_id=$( \
     curl -k -s --request POST \
-    --url http://$CASP/casp/api/v1.0/mng/accounts/$account_id/participants \
+    --url https://$CASP/casp/api/v1.0/mng/accounts/$account_id/participants \
     --header 'authorization: Bearer '$access_token \
     --header 'content-type: application/json' \
     --data "{
-        \"name\": \"$BOT_NAME\",
-        \"email\": \"$BOT_NAME@casp\",
+        \"name\": \"$BOT_NAME$BOT_INDEX\",
+        \"email\": \"$BOT_NAME$BOT_INDEX@casp\",
         \"role\":\"\"
     }" \
     | python -m json.tool | grep "id" | awk "{print \$NF}" | sed -e 's/"//' | sed -e 's/"//' | sed -e 's/,//')
   done
+  echo "bot_id = $bot_id"
 
+  echo "Getting BOT participant activation code..."
   until $([ ! -z "$activation_code" ]); do
     activation_code=$( \
     curl -k -s --request POST \
@@ -81,24 +85,24 @@ activate() {
       exit 1
     fi
   fi
-  echo "Activiating CASP BOT $bot_id ..."
-  cd /bot
-  java -Djava.library.path=./bin -jar bin/BotSigner.jar -p $bot_id -c $activation_code -w 123456 -u http://$CASP/casp
+  echo "Activating CASP BOT $bot_id ..."
+  cd /bot-ks
+  java -Djava.library.path=/bot/bin -jar /bot/bin/BotSigner.jar -p $bot_id -c $activation_code -w $BOT_KS_PASSWORD -u https://$CASP/casp -k
   echo $bot_id > id
-  touch /bot-activated
+  touch /bot-ks/bot-activated
 }
 
 
 
 start() {
-  cd /bot
+  cd /bot-ks
   id=`cat id`
   echo "Starting CASP BOT $id ..."
-  java -Djava.library.path=./bin -jar bin/BotSigner.jar -p $id -w 123456 -u http://$CASP/casp
+  java -Djava.library.path=/bot/bin -jar /bot/bin/BotSigner.jar -p $id -w $BOT_KS_PASSWORD -u https://$CASP/casp -k
 }
 
 wait_for_casp
-if [ -e "/bot-activated" ]; then
+if [ -e "/bot-ks/bot-activated" ]; then
   echo "CASP BOT is activated"
 else 
   activate

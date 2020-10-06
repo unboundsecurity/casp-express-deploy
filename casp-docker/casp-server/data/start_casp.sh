@@ -53,35 +53,25 @@ install() {
     echo "firebase.apikey=$CASP_FIREBASE_TOKEN" >> /etc/unbound/casp.conf
   fi
   
-  if [ ! -z "$INFURA_TOKEN" ]
+  if [ ! -z "$BLOCKSET_TOKEN" ]
   then
     if [ -f "/usr/bin/casp_setup_wallets" ]; 
     then
-      casp_setup_wallets --eth-token $INFURA_TOKEN &>/dev/null
-      casp_setup_wallets --ethtest-token $INFURA_TOKEN &>/dev/null
-    else 
-      sed -i -e "s/token: '#put your ethtest-ropsten infura api-token here'/token: $INFURA_TOKEN #/g" /opt/casp/providers/wallets/config/production.yaml
-      sed -i -e "s/token: '#put your eth infura api-token here'/token: $INFURA_TOKEN #/g" /opt/casp/providers/wallets/config/production.yaml
-
-      sed -i -e "s/disabled: true/disabled: false/g" /opt/casp/providers/wallets/config/production.yaml
+      casp_setup_wallets --blockset-token $BLOCKSET_TOKEN 
     fi
   fi
+
+  if [ ! -z "$INFURA_PROJECTID" ]
+  then
+    if [ -f "/usr/bin/casp_setup_wallets" ]; 
+    then
+      casp_setup_wallets --infura-project-id $INFURA_PROJECTID
+    fi
+  fi
+
   # Enabling trace log
   sed -i -e 's/Logger name="TRACE" additivity="false" level="off"/Logger name="TRACE" additivity="false" level="debug"/g' /etc/unbound/log4j/casp.xml
   
-
-  if [ ! -z "$BLOCKCYPHER_TOKEN" ]
-  then
-    if [ -f "/usr/bin/casp_setup_wallets" ];
-    then
-      casp_setup_wallets --btc-token $BLOCKCYPHER_TOKEN &>/dev/null
-      casp_setup_wallets --btctest-token $BLOCKCYPHER_TOKEN &>/dev/null
-    else 
-      sed -i -e "s/token: '#put your BlockCypher token here'/token: $BLOCKCYPHER_TOKEN #/g" /opt/casp/providers/wallets/config/production.yaml
-      sed -i -e "s/token: '#put your BlockCypher token here'/token: $BLOCKCYPHER_TOKEN #/g" /opt/casp/providers/wallets/config/production.yaml
-    fi
-  fi
-
   touch /casp-installed
 }
 

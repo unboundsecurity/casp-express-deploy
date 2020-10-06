@@ -1,33 +1,38 @@
 version: '3'
 services:
   ukc-ep:
-    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UNBOUND_VERSION:-2007}"
     container_name: ukc-ep
     restart: always
     ports:
      - "8443:8443"
-    command: ["ep", "ukc-partner", "ukc-aux"] 
+    entrypoint: ["/unbound/start_ukc.sh", "ep", "ukc-partner", "ukc-aux"] 
     hostname: ukc-ep
     environment:
       UKC_NOCERT: 'true'
       UKC_PASSWORD: 'Unbound1!'
       UKC_PARTITION: 'casp'
       UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
+      USE_CASP: 'true'
   ukc-partner:
-    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UNBOUND_VERSION:-2007}"
     container_name: ukc-partner
     restart: always
-    command: ["partner", "ukc-ep", "ukc-aux"]
+    entrypoint: ["/unbound/start_ukc.sh", "partner", "ukc-ep", "ukc-aux"]
     hostname: ukc-partner
+    environment: 
+      USE_CASP: 'true'
   ukc-aux:
-    image: "unboundukc/ukc-server:${CASP_VERSION:-latest}"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UNBOUND_VERSION:-2007}"
     container_name: ukc-aux
     restart: always
-    command: ["aux", "ukc-ep", "ukc-partner"]
+    entrypoint: ["/unbound/start_ukc.sh", "aux", "ukc-ep", "ukc-partner"]
     hostname: ukc-aux
     depends_on:
       - "ukc-ep"
       - "ukc-partner"
+    environment: 
+      USE_CASP: 'true'
   db:
     image: postgres:11
     container_name: db
@@ -39,8 +44,9 @@ services:
     environment:
       POSTGRES_PASSWORD: 'DBPassword'
   casp:
-    image: "unboundcasp/casp:${CASP_VERSION:-latest}"
+    image: "${UNBOUND_REPO:-unboundukc}/casp-server:${UNBOUND_VERSION:-2007}"
     container_name: casp
+    entrypoint: ["/unbound/start_casp.sh", "start"]
     restart: always
     ports:
       - "443:443"
@@ -53,8 +59,8 @@ services:
       UKC_PARTITION: 'casp'
       UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
       CASP_FIREBASE_TOKEN: ${FIREBASE_TOKEN}
-      INFURA_TOKEN: ${INFURA_TOKEN}
-      BLOCKCYPHER_TOKEN: ${BLOCKCYPHER_TOKEN}
+      INFURA_PROJECTID: ${INFURA_PROJECTID}
+      BLOCKSET_TOKEN: ${BLOCKSET_TOKEN}
       CASP_SO_PASSWORD: 'Unbound1!'
       CASP_ACCOUNT: 'CASP'
     depends_on:
@@ -63,7 +69,7 @@ services:
       - "ukc-aux"
       - "db"
   casp-bot:
-    image: "unboundcasp/casp-bot:${CASP_VERSION:-latest}"
+    image: "${UNBOUND_REPO:-unboundukc}/casp-bot:${UNBOUND_VERSION:-2007}"
     container_name: casp-bot
     restart: always
     environment:
@@ -71,6 +77,6 @@ services:
       CASP: 'casp'
       CASP_SO_PASSWORD: 'Unbound1!'
       CASP_ACCOUNT: 'CASP'
+      BOT_KS_PASSWORD: 'Unbound1!'
     depends_on:
       - "casp"
-      
