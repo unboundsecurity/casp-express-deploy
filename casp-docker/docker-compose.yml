@@ -2,7 +2,6 @@ version: '3'
 services:
   ukc-ep:
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UNBOUND_VERSION:-2007}"
-    container_name: ukc-ep
     restart: always
     ports:
      - "8443:8443"
@@ -16,7 +15,6 @@ services:
       USE_CASP: 'true'
   ukc-partner:
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UNBOUND_VERSION:-2007}"
-    container_name: ukc-partner
     restart: always
     entrypoint: ["/unbound/start_ukc.sh", "partner", "ukc-ep", "ukc-aux"]
     hostname: ukc-partner
@@ -24,7 +22,6 @@ services:
       USE_CASP: 'true'
   ukc-aux:
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UNBOUND_VERSION:-2007}"
-    container_name: ukc-aux
     restart: always
     entrypoint: ["/unbound/start_ukc.sh", "aux", "ukc-ep", "ukc-partner"]
     hostname: ukc-aux
@@ -35,7 +32,6 @@ services:
       USE_CASP: 'true'
   db:
     image: postgres:11
-    container_name: db
     restart: always
     ports:
       - 5432:5432
@@ -45,7 +41,6 @@ services:
       POSTGRES_PASSWORD: 'DBPassword'
   casp:
     image: "${UNBOUND_REPO:-unboundukc}/casp-server:${UNBOUND_VERSION:-2007}"
-    container_name: casp
     entrypoint: ["/unbound/start_casp.sh", "start"]
     restart: always
     ports:
@@ -70,7 +65,6 @@ services:
       - "db"
   casp-bot:
     image: "${UNBOUND_REPO:-unboundukc}/casp-bot:${UNBOUND_VERSION:-2007}"
-    container_name: casp-bot
     restart: always
     environment:
       BOT_NAME: 'casp-bot'
