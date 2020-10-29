@@ -1,9 +1,8 @@
 #!/bin/bash
-version=${UNBOUND_VERSION:-2007}
-declare SDK_URLS=(
-    ["2007"]="https://repo.dyadicsec.com/casp/releases/2007/1.0.2007.46326/centos/casp-sdk-package.1.0.2007.46326.RHES.x86_64.tar.gz"
-)
-install_url=${SDK_URLS[$version]}
+source ../../../installer_urls.sh
+version=${UB_VER:-2007}
+ver_id="CASP_SDK_URL_$version"
+install_url=${!ver_id}
 echo "Installing from ${install_url}"
 tag=${UNBOUND_REPO:-unboundukc}/casp-bot:${version}
 
