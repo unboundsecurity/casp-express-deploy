@@ -36,6 +36,4 @@ The following are required before installing CASP.
 1. Firebase messaging token (to enable push notifications). [Contact Unbound](https://www.unboundtech.com/company/contact-us/) for it.
 
 ## Installation
-After completing the prerequisites, follow the instructions based on the installation type:
-- [Docker](./casp-docker)
-- [Terraform](./casp-terraform)
+After completing the prerequisites, follow the instructions in [Docker](./casp-docker).
