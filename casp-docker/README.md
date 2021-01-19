@@ -28,6 +28,9 @@ Use these instructions to get CASP running using Docker.
 
     **Note: All subsequent commands are run from a terminal from this directory.**
 1. Start Docker.
+1. Set the memory limit for Docker to 6 GB. 
+    - If you are using Hyper-V, see [here](https://docs.docker.com/docker-for-windows/#resources) for Windows and [here](https://docs.docker.com/docker-for-mac/#resources) for Mac.
+    - If you are using WSL, see [here](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig).
 1. Create a file called *.env* in the same folder as the repository. The *.env* file holds your access tokens (see [Prerequisites](#Prerequisites)). 
 
    Note: The file must not have any prefix, i.e. the file name must be *.env*. If you are on Windows and it doesn't let you create a file with this name, use *.env.* (with a period at the end) for the name, then click OK twice, and it will create the *.env* file.
