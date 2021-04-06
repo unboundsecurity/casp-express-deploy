@@ -65,7 +65,7 @@ services:
       CASP_ACCOUNT: 'CASP'
     entrypoint: /bin/sh
     # Waiting for 'ukc-ep' to be healthy to avoid issues
-    command: -c 'while [[ "$$(curl -s -k -o /dev/null -w ''%{http_code}'' https://$${UKC_EP}:8443/api/v1/health)" != "200" ]]; do sleep 5; done; /unbound/start_casp.sh start'
+    command: -c 'while [[ "$$(curl -s -k -o /dev/null -w ''%{http_code}'' https://$${UKC_EP}:$${UKC_PORT}/api/v1/health)" != "200" ]]; do sleep 5; done; /unbound/start_casp.sh start'
     depends_on:
       - "ukc-ep"
       - "ukc-partner"
