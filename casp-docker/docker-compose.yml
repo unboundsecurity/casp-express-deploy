@@ -63,6 +63,9 @@ services:
       BLOCKSET_TOKEN: ${BLOCKSET_TOKEN}
       CASP_SO_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
       CASP_ACCOUNT: 'CASP'
+    entrypoint: /bin/sh
+    # Waiting for 'ukc-ep' to be healthy to avoid issues
+    command: -c 'while [[ "$$(curl -s -k -o /dev/null -w ''%{http_code}'' https://$${UKC_EP}:$${UKC_PORT}/api/v1/health)" != "200" ]]; do sleep 5; done; /unbound/start_casp.sh start'
     depends_on:
       - "ukc-ep"
       - "ukc-partner"
@@ -78,5 +81,8 @@ services:
       CASP_SO_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
       CASP_ACCOUNT: 'CASP'
       BOT_KS_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+    entrypoint: /bin/sh
+    # Waiting for 'casp' to be healthy to avoid issues
+    command: -c 'while [[ "$$(curl -s -k -o /dev/null -w ''%{http_code}'' https://$${CASP}:443/casp/api/v1.0/mng/status)" != "200" ]]; do sleep 5; done; /start_bot.sh start'
     depends_on:
       - "casp"
