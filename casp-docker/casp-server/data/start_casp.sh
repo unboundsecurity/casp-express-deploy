@@ -34,19 +34,20 @@ install() {
   
   echo "Connecting to UKC..."
   UKC_COUNTER=0
-  until [ $UKC_COUNTER -gt 12 ] ||  $(casp_setup_ukc --ukc-url https://$UKC_EP:8443 --ukc-user user@$UKC_PARTITION --ukc-password $UKC_PARTITION_USER_PASSWORD 2> /dev/null | grep -qw 'UKC health check was successful'); do
+  until [ $UKC_COUNTER -gt 12 ] ||  $(casp_setup_ukc --ukc-url https://$UKC_EP:8443 --ukc-user user@$UKC_PARTITION --ukc-password $UKC_PARTITION_USER_PASSWORD --ukc-admin-password $UKC_PARTITION_SO_PASSWORD --ukc-admin-user so@$UKC_PARTITION 2> /dev/null | grep -qw 'UKC health check was successful'); do
     let UKC_COUNTER+=1
     sleep 5
   done
+
   if ! $(casp_check_ukc 2> /dev/null | grep -qw 'UKC health check was successful') 
   then
     echo "Cannot connect to UKC"
-    casp_setup_ukc --ukc-url https://$UKC_EP:8443 --ukc-user user@$UKC_PARTITION --ukc-password $UKC_PARTITION_USER_PASSWORD --verbose
+    casp_setup_ukc --ukc-url https://$UKC_EP:8443 --ukc-user user@$UKC_PARTITION --ukc-password $UKC_PARTITION_USER_PASSWORD --ukc-admin-password $UKC_PARTITION_SO_PASSWORD --ukc-admin-user so@$UKC_PARTITION  --verbose
     exit 1
   fi 
   
   echo "Setting up database"
-  casp_setup_db --db-url jdbc:postgresql://$PGHOST:5432/$PGDATABASE --db-user $PGUSER --db-password $PGPASSWORD --db-driver org.postgresql.Driver --db-driver-path /opt/casp/jdbc/postgresql-42.2.5.jar &>/dev/null
+  casp_setup_db --db-url jdbc:postgresql://$PGHOST:5432/$PGDATABASE --db-user $PGUSER --db-password $PGPASSWORD --db-driver org.postgresql.Driver --db-driver-path $(ls /opt/casp/jdbc/postgresql-*) 
 
   if [ ! -z "$CASP_FIREBASE_TOKEN" ]
   then
@@ -154,7 +155,7 @@ create_account() {
       --header 'content-type: application/json' \
       --data "{
       \"name\": \"$CASP_ACCOUNT\",
-      \"isGlobal\": \"false\"
+      \"isGlobal\": \"${CASP_ACCOUNT_GLOBAL:-false}\"
     }" \
     | python -m json.tool | grep "id" | awk "{print \$NF}" | sed -e 's/"//' | sed -e 's/"//' | sed -e 's/,//')
   fi

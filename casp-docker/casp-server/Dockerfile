@@ -45,7 +45,7 @@ RUN echo "Downloading ${CASP_SERVER_INSTALLER_URL}..."; \
 COPY data/start_casp.sh /unbound/
 RUN chmod +x /unbound/start_casp.sh
 
-COPY data/casp-apache-redirect.conf /etc/httpd/conf.d/
+#COPY data/casp-apache-redirect.conf /etc/httpd/conf.d/
 
 EXPOSE 443
 
