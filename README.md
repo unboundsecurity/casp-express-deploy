@@ -1,6 +1,6 @@
 # CASP Express Deploy
 
-Unbound’s Crypto Asset Security Platform (“**CASP**”) provides the advanced technology and the architecture to secure crypto asset transactions. An overview of the CASP solution is found [here](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_Offering_Description/Solution.htm).
+Unbound’s Crypto Asset Security Platform (“**CASP**”) provides the advanced technology and the architecture to secure crypto asset transactions. An overview of the CASP solution is found [here](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_Offering_Description/Solution.htm).
 
 CASP can be rapidly deployed using one of these methods:
 - [Docker](https://hub.docker.com/?overlay=onboarding)
@@ -8,7 +8,7 @@ CASP can be rapidly deployed using one of these methods:
     - This method is intended for POCs, demos and development.
     - The complete system runs on a single device.
     
-The rapid installation process is described below. For the manual installation process, refer to the [CASP User Guide](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
+The rapid installation process is described below. For the manual installation process, refer to the [CASP User Guide](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_User_Guide/Installation.htm#Installing-CASP).
 
 ## Overview
 
