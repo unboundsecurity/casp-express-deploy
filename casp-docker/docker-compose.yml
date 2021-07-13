@@ -14,6 +14,10 @@ services:
       UKC_PARTITION: 'casp'
       UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
       USE_CASP: 'true'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   ukc-partner:
     container_name: "ukc-partner"
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}"
@@ -22,6 +26,10 @@ services:
     hostname: ukc-partner
     environment: 
       USE_CASP: 'true'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   ukc-aux:
     container_name: "ukc-aux"
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}"
@@ -33,6 +41,10 @@ services:
       - "ukc-partner"
     environment: 
       USE_CASP: 'true'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   db:
     container_name: "db"
     image: postgres:11
@@ -43,6 +55,10 @@ services:
       driver: none
     environment:
       POSTGRES_PASSWORD: 'DBPassword'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   casp:
     image: "${UNBOUND_REPO:-unboundukc}/casp-server:${UB_VER:-latest}"
     container_name: "casp"
@@ -58,6 +74,7 @@ services:
       UKC_PORT: ${UKC_PORT:-8443}
       UKC_PARTITION: 'casp'
       UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
+      UKC_PARTITION_SO_PASSWORD: 'Unbound1!'
       CASP_FIREBASE_TOKEN: ${FIREBASE_TOKEN}
       INFURA_PROJECTID: ${INFURA_PROJECTID}
       BLOCKSET_TOKEN: ${BLOCKSET_TOKEN}
@@ -71,6 +88,10 @@ services:
       - "ukc-partner"
       - "ukc-aux"
       - "db"
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   casp-bot:
     container_name: "casp-bot"
     image: "${UNBOUND_REPO:-unboundukc}/casp-bot:${UB_VER:-latest}"
@@ -86,3 +107,7 @@ services:
     command: -c 'while [[ "$$(curl -s -k -o /dev/null -w ''%{http_code}'' https://$${CASP}:443/casp/api/v1.0/mng/status)" != "200" ]]; do sleep 5; done; /start_bot.sh start'
     depends_on:
       - "casp"
+    deploy:
+      resources:
+        limits:
+          memory: 450m
