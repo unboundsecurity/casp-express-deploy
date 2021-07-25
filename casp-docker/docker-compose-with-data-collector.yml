@@ -1,0 +1,131 @@
+version: '3'
+services:
+  ukc-ep:
+    container_name: "ukc-ep"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}"
+    restart: always
+    ports:
+     - "${UKC_PORT:-8443}:8443"
+    command: ["ep", "ukc-partner", "ukc-aux"] 
+    hostname: ukc-ep
+    environment:
+      UKC_NOCERT: 'true'
+      UKC_PASSWORD: 'Unbound1!'
+      UKC_PARTITION: 'casp'
+      UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
+      USE_CASP: 'true'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
+  ukc-partner:
+    container_name: "ukc-partner"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}"
+    restart: always
+    command: ["partner", "ukc-ep", "ukc-aux"]
+    hostname: ukc-partner
+    environment: 
+      USE_CASP: 'true'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
+  ukc-aux:
+    container_name: "ukc-aux"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}"
+    restart: always
+    command: ["aux", "ukc-ep", "ukc-partner"]
+    hostname: ukc-aux
+    depends_on:
+      - "ukc-ep"
+      - "ukc-partner"
+    environment: 
+      USE_CASP: 'true'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
+  db:
+    container_name: "db"
+    image: postgres:11
+    restart: always
+    ports:
+      - 5432:5432
+    logging:
+      driver: none
+    environment:
+      POSTGRES_PASSWORD: 'DBPassword'
+    deploy:
+      resources:
+        limits:
+          memory: 450m
+  casp:
+    image: "${UNBOUND_REPO:-unboundukc}/casp-server:${UB_VER:-latest}"
+    container_name: "casp"
+    restart: always
+    ports:
+      - "443:443"
+    environment:
+      PGHOST: 'db'
+      PGDATABASE: 'postgres'
+      PGUSER: 'postgres'
+      PGPASSWORD: 'DBPassword'
+      UKC_EP: 'ukc-ep'
+      UKC_PORT: ${UKC_PORT:-8443}
+      UKC_PARTITION: 'casp'
+      UKC_PARTITION_USER_PASSWORD: 'Unbound1!'
+      UKC_PARTITION_SO_PASSWORD: 'Unbound1!'
+      CASP_FIREBASE_TOKEN: ${FIREBASE_TOKEN}
+      INFURA_PROJECTID: ${INFURA_PROJECTID}
+      BLOCKSET_TOKEN: ${BLOCKSET_TOKEN}
+      CASP_SO_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+      CASP_ACCOUNT: 'CASP'
+    entrypoint: /bin/sh
+    # Waiting for 'ukc-ep' to be healthy to avoid issues
+    command: -c 'while [[ "$$(curl -s -k -o /dev/null -w ''%{http_code}'' https://$${UKC_EP}:$${UKC_PORT}/api/v1/health)" != "200" ]]; do sleep 5; done; /unbound/start_casp.sh start'
+    depends_on:
+      - "ukc-ep"
+      - "ukc-partner"
+      - "ukc-aux"
+      - "db"
+    deploy:
+      resources:
+        limits:
+          memory: 450m
+  casp-bot:
+    container_name: "casp-bot"
+    image: "${UNBOUND_REPO:-unboundukc}/casp-bot:${UB_VER:-latest}"
+    restart: always
+    environment:
+      BOT_NAME: 'casp-bot'
+      CASP: 'casp'
+      CASP_SO_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+      CASP_ACCOUNT: 'CASP'
+      BOT_KS_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+    entrypoint: /bin/sh
+    # Waiting for 'casp' to be healthy to avoid issues
+    command: -c 'while [[ "$$(curl -s -k -o /dev/null -w ''%{http_code}'' https://$${CASP}:443/casp/api/v1.0/mng/status)" != "200" ]]; do sleep 5; done; /start_bot.sh start'
+    depends_on:
+      - "casp"
+    deploy:
+      resources:
+        limits:
+          memory: 450m
+  casp-dc:
+    container_name: "casp-dc"
+    image: "${UNBOUND_REPO:-unboundukc}/casp-dc:${UB_VER:-latest}"
+    restart: always
+    environment:
+      CASP: 'casp'
+      CASP_SO_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+      CASP_ACCOUNT: 'CASP'
+      BOT_DC_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+    entrypoint: /bin/sh
+    # Waiting for 'casp' to be healthy to avoid issues
+    command: -c '/start_dc_docker.sh'
+    depends_on:
+      - "casp-bot"
+    deploy:
+      resources:
+        limits:
+          memory: 450m
