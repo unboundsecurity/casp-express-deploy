@@ -1,6 +1,6 @@
 # 1. Deploy CASP Using Docker
 
-This project provides a quick and easy way to evaluate the Unbound [CASP](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_Offering_Description/Solution.htm) solution. Unbound CASP is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch CASP without any configuration using Docker.
+This project provides a quick and easy way to evaluate the Unbound [CASP](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_Offering_Description/Solution.htm) solution. Unbound CASP is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch CASP without any configuration using Docker.
 
 **Note: This project is intended to be used for POCs, demos and development.**
 
@@ -22,7 +22,7 @@ Use these instructions to get CASP running using Docker.
    - For Mac:
        - Install Docker Desktop (community edition) v2.1.0.5 or newer. Follow the instructions to [install Docker Desktop](https://docs.docker.com/compose/install/).
 
-1. Download or clone this repository from the [main page](https://github.com/unbound-tech/CASP-Express-Deploy) or click [here](https://github.com/unbound-tech/CASP-Express-Deploy/archive/master.zip).
+1. Download or clone this repository from the [main page](https://github.com/unboundsecurity/casp-express-deploy) or click [here](https://github.com/unboundsecurity/casp-express-deploy/archive/refs/heads/master.zip).
 1. If you downloaded a compressed (*.zip*) file, uncompress it. 
 1. The download contains a folder called *casp-docker*. Open a terminal and navigate to the `casp-docker` folder.
 
@@ -93,19 +93,19 @@ The Web UI provides the following screens:
 - Operations - lists all quorum operations for the account.
 - System - provides status information about various components in the system.
 
-For more information on how to use the web interface, see [CASP User Guide](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Web_Interface.htm).
+For more information on how to use the web interface, see [CASP User Guide](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_User_Guide/Web_Interface.htm).
 
 <a name="caspclient"></a>
 ## 1.2.2. Create and activate a mobile client
 
-Information about installing the CASP mobile app can be found [here](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Mobile_App.htm).
+Information about installing the CASP mobile app can be found [here](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_User_Guide/Mobile_App.htm).
 
 <a name="caspsdk"></a>
 ## 1.2.3. Develop your own application using the CASP SDK
 
-You can use the CASP SDK to develop your own application. See the [CASP Developers Guide](https://www.unboundsecurity.com/docs/CASP/CASP_Developers_Guide-HTML/Content/Products/Unbound_Cover_Page.htm) for more information and a full API reference.
+You can use the CASP SDK to develop your own application. See the [CASP Developers Guide](https://www.unboundsecurity.com/docs/CASP/CASP_Developers_Guide/Content/Products/Unbound_Cover_Page.htm) for more information and a full API reference.
 
-Also, refer to the [CASP BYOW JS Demo](https://github.com/unbound-tech/CASP-BYOW-JS-Demo) for sample code.
+Also, refer to the [CASP BYOW JS Demo](https://github.com/unboundsecurity/unbound-sample-code/tree/main/blockchain/ethereum/byow) for sample code.
 
 <a name="update"></a>
 ## 1.3. Restarting/Updating Docker
@@ -128,12 +128,11 @@ To update and restart Docker:
 ## 1.4. More Information
 This release has these associated documents:
 
-- [CASP User Guide](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/Unbound_Cover_Page.htm)
-    - [CASP Web UI](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Web_Interface.htm) - explore more about the WEb UI.
-    - [CASP Mobile App](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Mobile_App.htm) - add more participants that use the CASP Mobile app.
-- [CASP Frequently Asked Questions](https://www.unboundsecurity.com/docs/CASP/CASP_FAQ-HTML/Content/Products/Unbound_Cover_Page.htm)
-- [CASP Developers Guide with API Reference](https://www.unboundsecurity.com/docs/CASP/CASP_Developers_Guide-HTML/Content/Products/Unbound_Cover_Page.htm)
-- [CASP Participant SDK](https://www.unboundsecurity.com/docs/CASP/CASP_Participant_SDK-HTML/Content/Products/Unbound_Cover_Page.htm)
+- [CASP User Guide](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/Unbound_Cover_Page.htm)
+    - [CASP Web UI](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_User_Guide/Web_Interface.htm) - explore more about the WEb UI.
+    - [CASP Mobile App](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_User_Guide/Mobile_App.htm) - add more participants that use the CASP Mobile app.
+- [CASP Frequently Asked Questions](https://www.unboundsecurity.com/docs/CASP/CASP_FAQ/Content/Products/Unbound_Cover_Page.htm)
+- [CASP Developers Guide with API Reference](https://www.unboundsecurity.com/docs/CASP/CASP_Developers_Guide/Content/Products/Unbound_Cover_Page.htm)
 
 ## 1.5. Troubleshooting
 
@@ -162,7 +161,7 @@ If you need to turn on virtualization on your Windows device, use these instruct
 
 ### 1.5.3. CASP logs
 
-You can see the CASP log files by logging into the Docker container and then finding the CASP logs. See [here](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide-HTML/Content/Products/CASP/CASP_User_Guide/Audit_and_Logging.htm) for more information about the CASP logs.
+You can see the CASP log files by logging into the Docker container and then finding the CASP logs. See [here](https://www.unboundsecurity.com/docs/CASP/CASP_User_Guide/Content/Products/CASP/CASP_User_Guide/Audit_and_Logging.htm) for more information about the CASP logs.
 
 ## 1.6. Tips
 
