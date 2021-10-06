@@ -111,3 +111,21 @@ services:
       resources:
         limits:
           memory: 450m
+  casp-dc:
+    container_name: "casp-dc"
+    image: "${UNBOUND_REPO:-unboundukc}/casp-dc:${UB_VER:-latest}"
+    restart: always
+    environment:
+      CASP: 'casp'
+      CASP_SO_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+      CASP_ACCOUNT: 'CASP'
+      BOT_DC_PASSWORD: ${CASP_SO_PASSWORD:-Unbound1!}
+    entrypoint: /bin/sh
+    # Waiting for 'casp' to be healthy to avoid issues
+    command: -c '/start_dc_docker.sh'
+    depends_on:
+      - "casp-bot"
+    deploy:
+      resources:
+        limits:
+          memory: 450m
