@@ -4,8 +4,8 @@ services:
     container_name: "ukc-ep"
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}"
     restart: always
-    ports:
-     - "${UKC_PORT:-8443}:8443"
+    #ports:
+    # - "${UKC_PORT:-8443}:8443"
     command: ["ep", "ukc-partner", "ukc-aux"] 
     hostname: ukc-ep
     environment:
@@ -63,8 +63,8 @@ services:
     image: "${UNBOUND_REPO:-unboundukc}/casp-server:${UB_VER:-latest}"
     container_name: "casp"
     restart: always
-    ports:
-      - "443:443"
+    #ports:
+    #  - "9443:443"
     environment:
       PGHOST: 'db'
       PGDATABASE: 'postgres'
@@ -129,3 +129,13 @@ services:
       resources:
         limits:
           memory: 450m
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./nginx/40-generate-cert.sh:/docker-entrypoint.d/40-generate-cert.sh
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - "casp"
+    ports:
+      - 443:443
